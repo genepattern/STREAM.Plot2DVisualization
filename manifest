@@ -1,0 +1,184 @@
+#Fri, 22 Jun 2018 09:09:40 -0700
+# STREAM
+#Tues Jun 11 21:02:09 UTC 2019
+JVMLevel=
+LSID=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00405:999999999
+author=Ted Liefeld, UCSD School of Medicine.
+categories=SingleCell
+
+commandLine=python /stream/viz2d_command_line.py -m <data.file> -of <output.filename> -fig_name <figure.name> <percent.neighbor.cells> <perplexity> <color.by>  <method> <use.precomputed> <figure.width> <figure.height> <figure.legend.num.columns> 
+
+cpuType=any
+description=Check if there is clear meaningful trajectory pattern. If so, continue the downstream analysis; If not, go back to previous steps (preprocessing, feature selection and dimension reduction) to modify the parameters
+fileFormat=pkl
+language=any
+minGenePatternVersion=3.9.13
+name=STREAM.Plot2DVisualization
+os=any
+job.docker.image=genepattern/stream_plot2dvisualization
+job.cpuCount=2
+job.memory=8 Gb
+job.walltime=1\:00\:00
+
+p1_MODE=IN
+p1_TYPE=FILE
+p1_default_value=
+p1_description=A STREAM pkl file containing gene expression data
+p1_fileFormat=pkl
+p1_flag=
+p1_name=data.file
+p1_numValues=1..1
+p1_optional=
+p1_prefix=
+p1_prefix_when_specified=
+p1_type=java.io.File
+p1_value=
+
+p2_MODE=
+p2_TYPE=CHOICE
+p2_default_value=<output.filename>_dimensionreduction.pdf
+p2_description=The name for the pdf output
+p2_fileFormat=
+p2_flag=
+p2_name=figure.name
+p2_numValues=1..1
+p2_optional=
+p2_prefix=
+p2_prefix_when_specified=
+p2_type=java.lang.String
+p2_value=
+
+
+p3_MODE=
+p3_TYPE=CHOICE
+p3_default_value=0.1
+p3_description=The percentage of neighbor cells (only valid when 'umap' is specified). 
+p3_fileFormat=
+p3_flag=
+p3_name=percent.neighbor.cells
+p3_numValues=0..1
+p3_optional=on
+p3_prefix=
+p3_prefix_when_specified=-nb_pct   
+p3_type=java.lang.String
+p3_value=
+
+p4_MODE=
+p4_TYPE=CHOICE
+p4_default_value=30
+p4_description=The perplexity used (only valid when tSNE is specified)
+p4_fileFormat=
+p4_flag=
+p4_name=perplexity
+p4_numValues=1..1
+p4_optional=
+p4_prefix=
+p4_prefix_when_specified=-perplexity   
+p4_type=java.lang.String
+p4_value=
+
+p5_MODE=
+p5_TYPE=CHOICE
+p5_default_value=
+p5_description=Specify how to color cells. 'label': the cell labels (stored in adata.obs['label']), 'branch': the branch id identifed by STREAM
+p5_fileFormat=
+p5_flag=
+p5_name=color.by
+p5_numValues=1..1
+p5_optional=on
+p5_prefix=
+p5_prefix_when_specified=-color_by   
+p5_type=java.lang.String
+p5_value=label;branch
+
+p6_MODE=
+p6_TYPE=CHOICE
+p6_default_value=umap
+p6_description=Method used for visualization.  Choose from; 'umap': Uniform Manifold Approximation and Projection; 'tsne': t-Distributed Stochastic Neighbor Embedding.
+p6_fileFormat=
+p6_flag=
+p6_name=method
+p6_numValues=1..1
+p6_optional=
+p6_prefix=
+p6_prefix_when_specified=-method 
+p6_type=java.lang.String
+p6_value=Uniform Manifold Approximation and Projection (UMAP)\=umap;TSNE\=tsne
+
+p7_default_value=
+p7_description=If True, the visualization coordinates from previous computing will be used
+p7_fileFormat=
+p7_flag=
+p7_name=use.precomputed
+p7_numValues=0..1
+p7_optional=on
+p7_prefix=
+p7_prefix_when_specified=  
+p7_type=java.lang.String
+p7_value=\=FALSE;--flag_useprecomputed\=TRUE
+
+p8_MODE=
+p8_TYPE=TEXT
+p8_default_value=8
+p8_description=figure width 
+p8_fileFormat=
+p8_flag=
+p8_name=figure.width
+p8_numValues=0..1
+p8_optional=on
+p8_prefix=
+p8_prefix_when_specified=-fig_width   
+p8_type=java.lang.String
+p8_value=
+
+p9_MODE=
+p9_TYPE=TEXT
+p9_default_value=3
+p9_description=The number of columns that the legend has.
+p9_fileFormat=
+p9_flag=
+p9_name=figure.legend.num.columns
+p9_numValues=1..1
+p9_optional=
+p9_prefix=
+p9_prefix_when_specified=-fig_legend_ncol  
+p9_type=java.lang.String
+p9_value=
+
+p10_MODE=
+p10_TYPE=TEXT
+p10_default_value=8
+p10_description=figure height
+p10_fileFormat=
+p10_flag=
+p10_name=figure.height
+p10_numValues=0..1
+p10_optional=on
+p10_prefix=
+p10_prefix_when_specified=-fig_height  
+p10_type=java.lang.String
+p10_value=
+
+p11_MODE=
+p11_TYPE=TEXT
+p11_default_value=
+p11_description=output file name prefix
+p11_fileFormat=
+p11_flag=
+p11_name=output.filename
+p11_numValues=1..1
+p11_optional=
+p11_prefix=
+p11_prefix_when_specified=
+p11_type=java.lang.String
+p11_value=
+
+privacy=public
+publicationDate=06/11/2019 09\:09 
+quality=beta
+requiredPatchLSIDs=
+requiredPatchURLs=
+taskDoc=doc.html
+taskType=ScRnaSeq
+userid=ted
+version=inital revision

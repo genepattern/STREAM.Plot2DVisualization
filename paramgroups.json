@@ -1,0 +1,10 @@
+[
+{"name": "General", 
+  "parameters": ["data.file", "output.filename", "method", "percent.neighbor.cells", "perplexity", "color.by", "use.precomputed"]},
+
+{"name": "Plotting", "hidden": false,
+  "parameters": ["figure.name", "figure.width", "figure.height", "figure.legend.num.columns"]}
+
+]
+
+
