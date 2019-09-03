@@ -36,7 +36,7 @@ p1_value=
 
 p2_MODE=
 p2_TYPE=CHOICE
-p2_default_value=<output.filename>_dimensionreduction.pdf
+p2_default_value=<output.filename>_2d_viz.png
 p2_description=The name for the pdf output
 p2_fileFormat=
 p2_flag=
@@ -103,7 +103,7 @@ p6_optional=
 p6_prefix=
 p6_prefix_when_specified=-method 
 p6_type=java.lang.String
-p6_value=Uniform Manifold Approximation and Projection (UMAP)\=umap;TSNE\=tsne
+p6_value=umap\=Uniform Manifold Approximation and Projection (UMAP);tsne\=TSNE
 
 p7_default_value=
 p7_description=If True, the visualization coordinates from previous computing will be used

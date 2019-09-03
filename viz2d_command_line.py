@@ -50,7 +50,7 @@ def main():
 
     parser.add_argument("-nb_pct","--percent_neighbor_cells",dest="nb_pct", type=float, default=None, help="")
     parser.add_argument("-n_comp_k",dest="n_comp_k", type = int, default=None,  help="")
-    parser.add_argument("-perplexity",dest="perplexity", default=None,   help="feature")
+    parser.add_argument("-perplexity",dest="perplexity", type=float, default=None,   help="")
 
     parser.add_argument("-method",dest="method",  default=None,  help="")
     parser.add_argument("-color_by",dest="color_by",  default='label',  help="")
@@ -67,6 +67,8 @@ def main():
 
     adata = st.read(file_name=args.input_filename, file_format='pkl', experiment='rna-seq', workdir=workdir)
 
+
+    print("args are method=", args.method, "nb_pct=", args.nb_pct, "perplexity=", args.perplexity, "   colorby=", args.color_by,"  use.pre=", args.flag_useprecomputed)
     st.plot_visualization_2D(adata, method=args.method, nb_pct=args.nb_pct, perplexity=args.perplexity, color_by=args.color_by,use_precomputed=args.flag_useprecomputed, save_fig=True, fig_path='./', fig_name=args.fig_name, fig_size=(args.fig_width,args.fig_height ),fig_legend_ncol=args.fig_legend_ncol)
 
     st.write(adata,file_name=(args.output_filename_prefix + '_stream_result.pkl'),file_path='./',file_format='pkl') 
