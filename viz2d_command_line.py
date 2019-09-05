@@ -45,7 +45,6 @@ def main():
     parser.add_argument("-m", "--data-file", dest="input_filename",default = None, help="input file name, pkl format from Stream preprocessing module", metavar="FILE")
     parser.add_argument("-of","--of",dest="output_filename_prefix", default="StreamiFSOutput",  help="output file name prefix")
 
-    parser.add_argument("-fig_name",dest="fig_name",  default=None, help="")
     parser.add_argument("--flag_useprecomputed",dest="flag_useprecomputed", action="store_true", help="Save the figure")
 
     parser.add_argument("-nb_pct","--percent_neighbor_cells",dest="nb_pct", type=float, default=None, help="")
@@ -68,7 +67,7 @@ def main():
     adata = st.read(file_name=args.input_filename, file_format='pkl', experiment='rna-seq', workdir=workdir)
 
 
-    st.plot_visualization_2D(adata, method=args.method, nb_pct=args.nb_pct, perplexity=args.perplexity, color_by=args.color_by,use_precomputed=args.flag_useprecomputed, save_fig=True, fig_path='./', fig_name=args.fig_name, fig_size=(args.fig_width,args.fig_height ),fig_legend_ncol=args.fig_legend_ncol)
+    st.plot_visualization_2D(adata, method=args.method, nb_pct=args.nb_pct, perplexity=args.perplexity, color_by=args.color_by,use_precomputed=args.flag_useprecomputed, save_fig=True, fig_path='./', fig_name=(args.output_filename_prefix +"_2D_lot.png"), fig_size=(args.fig_width,args.fig_height ),fig_legend_ncol=args.fig_legend_ncol)
 
     st.write(adata,file_name=(args.output_filename_prefix + '_stream_result.pkl'),file_path='./',file_format='pkl') 
 
