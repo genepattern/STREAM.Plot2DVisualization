@@ -67,7 +67,7 @@ def main():
     adata = st.read(file_name=args.input_filename, file_format='pkl', experiment='rna-seq', workdir=workdir)
 
 
-    st.plot_visualization_2D(adata, method=args.method, nb_pct=args.nb_pct, perplexity=args.perplexity, color_by=args.color_by,use_precomputed=args.flag_useprecomputed, save_fig=True, fig_path='./', fig_name=(args.output_filename_prefix +"_2D_lot.png"), fig_size=(args.fig_width,args.fig_height ),fig_legend_ncol=args.fig_legend_ncol)
+    st.plot_visualization_2D(adata, method=args.method, nb_pct=args.nb_pct, perplexity=args.perplexity, color_by=args.color_by,use_precomputed=args.flag_useprecomputed, save_fig=True, fig_path='./', fig_name=(args.output_filename_prefix +"_2D_plot.png"), fig_size=(args.fig_width,args.fig_height ),fig_legend_ncol=args.fig_legend_ncol)
 
     st.write(adata,file_name=(args.output_filename_prefix + '_stream_result.pkl'),file_path='./',file_format='pkl') 
 

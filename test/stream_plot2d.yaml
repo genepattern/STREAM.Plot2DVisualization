@@ -1,0 +1,13 @@
+#
+# ant -f ${GPUNIT_HOME}/build.xml -Dgpunit.diffStripTrailingCR="--strip-trailing-cr" -Dgp.host="beta.genepattern.org" -Dgp.url="https://beta.genepattern.org" -Dgp.user="ted-dev" -Dgp.password="" -Dgpunit.testfolder=`pwd` gpunit
+#
+name: STREAM.Plot2DVisualization
+module: STREAM.Plot2DVisualization
+params: 
+    "data.file": "./data/dimred_stream_result.pkl" 
+    "output.filename": "test"
+assertions:
+    jobStatus: success
+    files:
+        "test_stream_result.pkl":  !!null
+        "test_2D_plot.png": !!null
