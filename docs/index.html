@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html class="">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>STREAM.FeatureSelection GenePattern Module</title>
+  <link href="./assets/docstyle.css" media="all" rel="stylesheet">
+  <style type="text/css"></style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="authenticity_token" name="csrf-param">
+</head>
+<body >
+
+<script>
+</script>
+	
+	<div class="gp-content-header fluid">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+			        <h4><img src="./assets/gplogo.png"/>Module Documentation</h4>
+                                <h1><big>STREAM.FeatureSelection</big></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				
+<br/>
+<dl class="dl-horizontal">
+	<dt>LSID</dt>
+	<dd>urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00396</dd>
+	<dt>Author(s)</dt>
+	<dd>Huidong Chen, Massachussets General Hospital, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.</dd>
+	<dt>Contact(s)</dt>
+	<dd><p>Algorithm and scientific questions:&nbsp;&lt;Huidong.Chen &nbsp;at mgh dot harvard  dot edu&gt;</p>
+<p>Module wrapping issues:&nbsp; Ted Liefeld &nbsp;&lt; jliefeld at cloud dot ucsd dot edu&gt;</p>
+</dd>
+</dl>
+
+
+<hr>
+
+<h2>Introduction</h2>
+
+<p>STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) is an interactive pipeline capable of disentangling and visualizing complex branching trajectories from both single-cell transcriptomic and epigenomic data.  Within GenePattern STREAM is implemented as a collection of modules that cover the entire STREAM processing pipeline to allow individual steps to be performed interactively for data exploration.</p>
+
+<p>STREAM.FeatureSelection is used to check if there is clear meaningful trajectory pattern via TSNE or UMAP 2-D plots. If so, we can continue the STREAM analysis; If not, go back to previous steps (preprocessing, feature selection and dimension reduction) to modify the parameters.</p>
+
+<p><h5>Huidong to add detail explaining this part of the STREAM pipeline</h5></p>
+
+<p>&nbsp;</p>
+
+<h2>Algorithm</h2>
+<p>
+<h5>Huidong to cover details of this portion of the analysis</h5>
+</p>
+
+<h2>References</h2>
+<p>H Chen, L Albergante, JY Hsu, CA Lareau, GL Bosco, J Guan, S Zhou, AN Gorban, DE Bauer, MJ Aryee, DM Langenau, A Zinovyev, JD Buenrostro, GC Yuan, L Pinello&nbsp;<a href="https://www.nature.com/articles/s41467-019-09670-4">Single-cell trajectories reconstruction, exploration and mapping of omics data with STREAM. </a> Nature Communications, volume 10, Article number: 1903 (2019)</p>
+<p>Nestorowa, S. et al.<a href="https://www.ncbi.nlm.nih.gov/pubmed/27365425"> A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a>. Blood 128, e20-31 (2016).</p>
+<p>Pinello Lab &nbsp; <a href="https://github.com/pinellolab/STREAM">STREAM Github Repository</a></p>
+<p><b>ADD GPNB NOTEBOOK HERE WHEN READY</b></p>
+
+<h2>Input Files</h2>
+
+<ol>
+	<li>data file *<br>
+ A STREAM pkl file containing an annotated AnnData matrix of gene expression data.</li>
+	
+</ol>
+
+<h2>Output Files</h2>
+
+<ol>
+	<li>&lt;output filename&gt;_stream_result.pkl<br/>
+	Output file in STREAM AnnData extended pickle (.pkl) file format suitable for passing to the next step of the STREAM analysis.</li>
+	<li>&lt;output filename&gt;_2D_plot.png<bt/>
+        TSNE or UMAP plot of the data.. 
+        </li>
+
+
+</ol>
+
+<h2>Example Data</h2>
+
+<p>Example data can be downloaded from dropbox: <a href="https://www.dropbox.com/sh/dfqht1ob89ku99d/AACI5ZW3aRuq9MhBfSNS_1O_a?dl=0">Stream Example Data</a><br/>
+Ref: Nestorowa, S. et al. <a href="https://www.ncbi.nlm.nih.gov/pubmed/27365425">A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a>. Blood 128, e20-31 (2016).</p>
+
+<h2>Requirements</h2>
+
+<p>GenePattern 3.9.11 or later (dockerized).</p>
+
+
+<h2>Parameters</h2>
+
+<table class="table table-striped">
+	
+	<tbody>
+		<tr><td colspan=2 ><h4>General</h4></td></tr>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>data file*</td>
+			<td>A STREAM pkl file containing an annotated AnnData matrix of gene expression data/td>
+		</tr>
+		<tr>
+			<td>output filename*</td>
+			<td>The output filename prefix.</td>
+		</tr>
+		<tr>
+			<td>method</td>
+			<td>  Method used for visualization. Choose from; 'umap': Uniform Manifold Approximation and Projection; 'tsne': t-Distributed Stochastic Neighbor Embedding. </td>
+		</tr>
+                <tr>
+                        <td> percent neighbor cells</td>
+                        <td>	The percentage of neighbor cells (only valid when 'umap' is specified).</td>
+                </tr>
+                <tr>
+                        <td>perplexity </td>
+                        <td> The perplexity used (only valid when tSNE is specified).  </td>
+                </tr>
+                <tr>
+                        <td> color by  </td>
+                        <td>  Specify how to color cells. 'label': the cell labels (stored in adata.obs['label']), 'branch': the branch id identifed by STREAM </td>
+                </tr>
+                <tr>
+
+                        <td>use precomputed</td>
+                        <td>  	If True, the visualization coordinates from previous computation result (in pkl input file)  will be used </td>
+                </tr>
+                <tr><td colspan=2><h4>Plotting</h4>
+                        Parameters controlling the output figures.
+                </td></tr>
+		<tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                </tr>
+                <tr>
+                        <td>figure height/td>
+                        <td>Figure height as used in matplotlib graphs.  Default=8.</td>
+                </tr>
+                <tr>
+                        <td>figure width</td>
+                        <td>Figure width as used in matplotlib plots.  Default=8</td>
+                </tr>
+                <tr>
+                        <td> figure legend num columns  </td>
+                        <td> The number of columns used in the figure legend, default=3.  </td>
+                </tr>
+
+
+	</tbody>
+</table>
+
+<p><span style="color: red;">*</span> - required</p>
+			</div>
+		</div>
+	</div>
+
+	</div>
+	<footer class="container fluid gp-footer">
+	<div class="fluid text-center">©2006-2019 Regents of the University of California &amp; The Broad Institute of MIT and Harvard</div> 
+</footer>
+
+
+
+<div id="feedly-mini" title="feedly Mini tookit"></div></body></html>
+
