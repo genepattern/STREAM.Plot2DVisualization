@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html class="">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>STREAM.FeatureSelection GenePattern Module</title>
+  <title>STREAM.Plot2DVisualization GenePattern Module</title>
   <link href="./assets/docstyle.css" media="all" rel="stylesheet">
   <style type="text/css"></style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,7 @@
 			<div class="row">
 				<div class="col-md-12">
 			        <h4><img src="./assets/gplogo.png"/>Module Documentation</h4>
-                                <h1><big>STREAM.FeatureSelection</big></h1>
+                                <h1><big>STREAM.Plot2DVisualization</big></h1>
 				</div>
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 <br/>
 <dl class="dl-horizontal">
 	<dt>LSID</dt>
-	<dd>urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00405</dd>
+	<dd>urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00406</dd>
 	<dt>Author(s)</dt>
 	<dd>Huidong Chen, Massachussets General Hospital, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.</dd>
 	<dt>Contact(s)</dt>
@@ -46,29 +46,32 @@
 
 <p>STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) is an interactive pipeline capable of disentangling and visualizing complex branching trajectories from both single-cell transcriptomic and epigenomic data.  Within GenePattern STREAM is implemented as a collection of modules that cover the entire STREAM processing pipeline to allow individual steps to be performed interactively for data exploration.</p>
 
-<p>STREAM.FeatureSelection is used to check if there is clear meaningful trajectory pattern via TSNE or UMAP 2-D plots. If so, we can continue the STREAM analysis; If not, go back to previous steps (preprocessing, feature selection and dimension reduction) to modify the parameters.</p>
-
-<p><h5>Huidong to add detail explaining this part of the STREAM pipeline</h5></p>
-
-<p>&nbsp;</p>
+<p>STREAM.Plolt2DVisualization is used check if there is clear meaningful trajectory pattern to the data. If there is, we will continue the downstream analysis placing the cells onto the trajectories. If not, we would go back to previous steps to modify the parameters used to filter and prepare the data to try different settings.</p>
 
 <h2>Algorithm</h2>
 <p>
-<h5>Huidong to cover details of this portion of the analysis</h5>
+<h5>To check the data, we use UMAP (Uniform Manifold Approximation and Projection) or tSNE (t-Distributed Stichastic Neighbor Embedding)  based on the components returned from a run of the STREAM.DimensionReduction module to visualize the data in 2D plane.</h5>
+</p>
+<p>UMAP is a manifold learning technique ifor dimension reduction constructed from a theoretical framework based in Riemannian geometry and algebraic topology. UMAP preserves more of the global structure than tSNE and runs more quickly.
+</p>
+<p>
+tSNE is a technique for dimensionality reduction for the visualization of high-dimensional datasets. This technique is  implemented via Barnes-Hut approximations, allowing it to be applied on large real-world datasets.
 </p>
 
 <h2>References</h2>
 <p>H Chen, L Albergante, JY Hsu, CA Lareau, GL Bosco, J Guan, S Zhou, AN Gorban, DE Bauer, MJ Aryee, DM Langenau, A Zinovyev, JD Buenrostro, GC Yuan, L Pinello&nbsp;<a href="https://www.nature.com/articles/s41467-019-09670-4">Single-cell trajectories reconstruction, exploration and mapping of omics data with STREAM. </a> Nature Communications, volume 10, Article number: 1903 (2019)</p>
 <p>Nestorowa, S. et al.<a href="https://www.ncbi.nlm.nih.gov/pubmed/27365425"> A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a>. Blood 128, e20-31 (2016).</p>
 <p>Pinello Lab &nbsp; <a href="https://github.com/pinellolab/STREAM">STREAM Github Repository</a></p>
-<p><b>ADD GPNB NOTEBOOK HERE WHEN READY</b></p>
+<p>https://umap-learn.readthedocs.io/en/latest/</p>
+<p>Leland McInnes, John Healy, James Melville, <a href="https://arxiv.org/abs/1802.03426">UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction</a></p>
+<p>L.J.P. van der Maaten. Accelerating t-SNE using Tree-Based Algorithms. Journal of Machine Learning Research 15(Oct):3221-3245, 2014.</p>
+
 
 <h2>Input Files</h2>
 
 <ol>
 	<li>data file *<br>
  A STREAM pkl file containing an annotated AnnData matrix of gene expression data.</li>
-	
 </ol>
 
 <h2>Output Files</h2>
@@ -125,7 +128,7 @@ Ref: Nestorowa, S. et al. <a href="https://www.ncbi.nlm.nih.gov/pubmed/27365425"
                 </tr>
                 <tr>
                         <td> color by  </td>
-                        <td>  Specify how to color cells. 'label': the cell labels (stored in adata.obs['label']), 'branch': the branch id identifed by STREAM </td>
+                        <td>  Specify how to color cells. 'label': the cell labels, 'branch': the branch id identifed by STREAM </td>
                 </tr>
                 <tr>
 
