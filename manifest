@@ -9,7 +9,7 @@ categories=SingleCell
 commandLine=python /stream/viz2d_command_line.py -m <data.file> -of <output.filename> <percent.neighbor.cells> <perplexity> <color.by>  <method> <use.precomputed> <figure.width> <figure.height> <figure.legend.num.columns> 
 
 cpuType=any
-description=STREAM.FeatureSelection is used to check if there is clear meaningful trajectory pattern via TSNE or UMAP 2-D plots. If so, we can continue the STREAM analysis; If not, go back to previous steps (preprocessing, feature selection and dimension reduction) to modify the parameters.
+description=STREAM.Plot2DVisualization is used to check if there is clear meaningful trajectory pattern via TSNE or UMAP 2-D plots. If so, we can continue the STREAM analysis; If not, go back to previous steps (preprocessing, feature selection and dimension reduction) to modify the parameters.
 fileFormat=pkl
 language=any
 minGenePatternVersion=3.9.13
