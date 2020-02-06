@@ -63,7 +63,7 @@ p3_value=
 
 p4_MODE=
 p4_TYPE=CHOICE
-p4_default_value=
+p4_default_value=label
 p4_description=Specify how to color cells. 'label': the cell labels, 'branch': the branch id identifed by STREAM.
 p4_fileFormat=
 p4_flag=

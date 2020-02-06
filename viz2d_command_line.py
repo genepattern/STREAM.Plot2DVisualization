@@ -51,7 +51,7 @@ def main():
     parser.add_argument("-n_comp_k",dest="n_comp_k", type = int, default=None,  help="")
     parser.add_argument("-perplexity",dest="perplexity", type=float, default=None,   help="")
 
-    parser.add_argument("-method",dest="method",  default=None,  help="")
+    parser.add_argument("-method",dest="method",  default='umap',  help="")
     parser.add_argument("-color_by",dest="color_by",  default='label',  help="")
     parser.add_argument("-fig_width",dest="fig_width", type=int, default=8, help="")        
     parser.add_argument("-fig_height",dest="fig_height", type=int, default=8, help="")
@@ -63,9 +63,9 @@ def main():
     
     print('Starting ...')
     workdir = "./"
+    print(str(args))
 
     adata = st.read(file_name=args.input_filename, file_format='pkl', experiment='rna-seq', workdir=workdir)
-
 
     st.plot_visualization_2D(adata, method=args.method, nb_pct=args.nb_pct, perplexity=args.perplexity, color_by=args.color_by,use_precomputed=args.flag_useprecomputed, save_fig=True, fig_path='./', fig_name=(args.output_filename_prefix +"_2D_plot.png"), fig_size=(args.fig_width,args.fig_height ),fig_legend_ncol=args.fig_legend_ncol)
 
